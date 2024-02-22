@@ -37,6 +37,7 @@ public class ProjectMember {
     public static class Pk implements Serializable {
 
         @Column(name = "member_id")
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private String memberId;
 
         private Integer projectId;
