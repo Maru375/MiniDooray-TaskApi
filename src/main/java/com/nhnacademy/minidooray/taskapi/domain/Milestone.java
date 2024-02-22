@@ -1,9 +1,6 @@
 package com.nhnacademy.minidooray.taskapi.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,7 +9,6 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "milestones")
 public class Milestone {
 
@@ -29,4 +25,11 @@ public class Milestone {
     @Column(name = "end_date")
     private LocalDateTime endDate;
 
+    @Builder
+    public Milestone(Integer milestoneId, String name, LocalDateTime startedAt, LocalDateTime endDate) {
+        this.milestoneId = milestoneId;
+        this.name = name;
+        this.startedAt = startedAt;
+        this.endDate = endDate;
+    }
 }
