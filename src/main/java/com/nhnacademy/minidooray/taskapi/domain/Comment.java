@@ -18,6 +18,7 @@ public class Comment {
 
     @Id
     @Column(name = "comment_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer commentId;
 
     @ManyToOne
