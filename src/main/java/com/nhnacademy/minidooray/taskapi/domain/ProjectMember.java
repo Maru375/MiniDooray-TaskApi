@@ -14,20 +14,20 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "project_menbers")
+@Table(name = "project_members")
 public class ProjectMember {
 
     @EmbeddedId
     private Pk pk;
 
-    @Column(name = "auth_type")
-    @Enumerated(EnumType.STRING)
-    private AuthType authType;
-
     @ManyToOne
     @MapsId("projectId")
     @JoinColumn(name = "project_id")
     private Project projectId;
+
+    @Column(name = "auth_type")
+    @Enumerated(EnumType.STRING)
+    private AuthType authType;
 
     @Getter
     @Setter
