@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class Milestone {
 
     @Id
-    @Column(name = "milesotone_id")
+    @Column(name = "milestone_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer milestoneId;
 

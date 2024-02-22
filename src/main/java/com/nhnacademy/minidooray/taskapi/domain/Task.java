@@ -35,7 +35,7 @@ public class Task {
     private Tag tag;
 
     @OneToOne
-    @JoinColumn(name = "milesotone_id")
+    @JoinColumn(name = "milestone_id")
     private Milestone milestone;
 
     @Column(name = "task_name")

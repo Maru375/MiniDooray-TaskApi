@@ -32,7 +32,7 @@ public class Project{
     private Tag tagId;
 
     @OneToOne
-    @JoinColumn(name = "milesotone_id")
+    @JoinColumn(name = "milestone_id")
     private Milestone milestoneId;
 
     @Column(name = "created_at")
