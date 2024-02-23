@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -31,7 +30,7 @@ public class ProjectServiceImpl implements ProjectService {
         }
         return projects.stream()
                 .map(ProjectSimpleResponse::new)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override

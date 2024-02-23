@@ -21,9 +21,9 @@ GET http://localhost:9090/projects
 Accept: application/json
 
 ###
-GET http://localhost:9090/projects/3
+GET http://localhost:9090/projects/8
 Accept: application/json
 
 ###
-DELETE http://localhost:9090/projects/10
+DELETE http://localhost:9090/projects/4
 Accept: application/json
