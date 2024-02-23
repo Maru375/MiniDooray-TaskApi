@@ -20,8 +20,7 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "project_id")
-    @JoinColumn(name = "manager_id")
-    private ProjectMember projectMember;
+    private Project projectId;
 
     @ManyToOne
     @JoinColumn(name = "tag_id")
@@ -37,6 +36,8 @@ public class Task {
     @Column(name = "task_content")
     private String taskContent;
 
+    private String recorder;
+
     @Column(name = "state")
     @Enumerated(EnumType.STRING)
     private TaskState taskState;
@@ -48,12 +49,14 @@ public class Task {
     private LocalDateTime modifiedAt;
 
     @Builder
-    public Task(int taskId, ProjectMember projectId, ProjectMember managerId, Tag tag, Milestone milestone, String taskName, String taskContent, TaskState taskState, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public Task(int taskId, Project projectId, Tag tag, Milestone milestone, String taskName, String taskContent, String recorder, TaskState taskState, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.taskId = taskId;
+        this.projectId = projectId;
         this.tag = tag;
         this.milestone = milestone;
         this.taskName = taskName;
         this.taskContent = taskContent;
+        this.recorder = recorder;
         this.taskState = taskState;
         this.createdAt = createdAt;
         this.modifiedAt = modifiedAt;

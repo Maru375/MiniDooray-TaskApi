@@ -1,9 +1,6 @@
 package com.nhnacademy.minidooray.taskapi.dto.task;
 
-import com.nhnacademy.minidooray.taskapi.domain.Milestone;
-import com.nhnacademy.minidooray.taskapi.domain.ProjectMember;
-import com.nhnacademy.minidooray.taskapi.domain.Tag;
-import com.nhnacademy.minidooray.taskapi.domain.Task;
+import com.nhnacademy.minidooray.taskapi.domain.*;
 import com.nhnacademy.minidooray.taskapi.enums.TaskState;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,12 +16,16 @@ import java.time.LocalDateTime;
 public class TaskResponse {
 
     @NotNull
+    private int taskId;
+    @NotNull
+    private Project projectId;
+    @NotNull
     private String taskName;
     private String taskContent;
-    @NotNull
-    private ProjectMember managerId;
     private Tag tag;
     private Milestone milestone;
+    @NotNull
+    private String recorder;
     private TaskState taskState;
     @NotNull
     private LocalDateTime createdAt;
@@ -32,11 +33,13 @@ public class TaskResponse {
 
     @Builder
     public TaskResponse(Task task) {
+        this.taskId = task.getTaskId();
+        this.projectId = task.getProjectId();
         this.taskName = task.getTaskName();
         this.taskContent = task.getTaskContent();
-        this.managerId = task.getManagerId();
         this.tag = task.getTag();
         this.milestone = task.getMilestone();
+        this.recorder = task.getRecorder();
         this.taskState = task.getTaskState();
         this.createdAt = task.getCreatedAt();
         this.modifiedAt = task.getModifiedAt();
