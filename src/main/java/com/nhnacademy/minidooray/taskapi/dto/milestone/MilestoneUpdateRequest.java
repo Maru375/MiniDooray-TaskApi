@@ -18,7 +18,6 @@ public class MilestoneUpdateRequest {
     @NotNull
     private Integer milestoneId;
     private String name;
-    private LocalDateTime startedAt;
     @NotNull
     private LocalDateTime endDate;
 
@@ -26,7 +25,6 @@ public class MilestoneUpdateRequest {
         return Milestone.builder()
                 .milestoneId(milestoneId)
                 .name(name)
-                .startedAt(startedAt)
                 .endDate(endDate)
                 .build();
     }

@@ -19,13 +19,11 @@ public class MilestoneCreateRequest {
     private String name;
     @NotNull
     private LocalDateTime startedAt;
-    private LocalDateTime endDate;
 
     public Milestone toEntity(){
         return Milestone.builder()
                 .name(name)
                 .startedAt(startedAt)
-                .endDate(endDate)
                 .build();
     }
 }
