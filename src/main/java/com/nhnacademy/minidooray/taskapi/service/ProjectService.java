@@ -1,6 +1,9 @@
 package com.nhnacademy.minidooray.taskapi.service;
 
-import com.nhnacademy.minidooray.taskapi.dto.project.*;
+import com.nhnacademy.minidooray.taskapi.dto.project.ProjectCreateRequest;
+import com.nhnacademy.minidooray.taskapi.dto.project.ProjectResponse;
+import com.nhnacademy.minidooray.taskapi.dto.project.ProjectSimpleResponse;
+import com.nhnacademy.minidooray.taskapi.dto.project.ProjectUpdateRequest;
 
 import java.util.List;
 
@@ -11,7 +14,7 @@ public interface ProjectService {
 
     ProjectResponse createProject(ProjectCreateRequest projectCreateRequest);
 
-    ProjectResponse updateProject(ProjectUpdateRequest projectUpdateRequest);
+    ProjectResponse updateProject(Integer id, ProjectUpdateRequest projectUpdateRequest);
 
     void deleteProject(Integer id);
 }
