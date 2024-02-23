@@ -20,11 +20,8 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "project_id")
-    private ProjectMember projectId;
-
-    @ManyToOne
     @JoinColumn(name = "manager_id")
-    private ProjectMember managerId;
+    private ProjectMember projectMember;
 
     @ManyToOne
     @JoinColumn(name = "tag_id")
@@ -53,8 +50,6 @@ public class Task {
     @Builder
     public Task(int taskId, ProjectMember projectId, ProjectMember managerId, Tag tag, Milestone milestone, String taskName, String taskContent, TaskState taskState, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.taskId = taskId;
-        this.projectId = projectId;
-        this.managerId = managerId;
         this.tag = tag;
         this.milestone = milestone;
         this.taskName = taskName;

@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -29,6 +31,9 @@ public class ProjectMember {
     @Enumerated(EnumType.STRING)
     private AuthType authType;
 
+    @OneToMany(mappedBy = "projectMember")
+    private List<Task> tasks = new ArrayList<>();
+
     @Getter
     @Setter
     @Embeddable
@@ -41,6 +46,5 @@ public class ProjectMember {
         private String memberId;
 
         private Integer projectId;
-
     }
 }
