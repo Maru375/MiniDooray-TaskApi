@@ -31,9 +31,6 @@ public class ProjectMember {
     @Enumerated(EnumType.STRING)
     private AuthType authType;
 
-    @OneToMany(mappedBy = "projectMember")
-    private List<Task> tasks = new ArrayList<>();
-
     @Getter
     @Setter
     @Embeddable

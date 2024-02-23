@@ -1,25 +1,25 @@
 package com.nhnacademy.minidooray.taskapi.dto.project;
 
 import com.nhnacademy.minidooray.taskapi.domain.Project;
-import com.nhnacademy.minidooray.taskapi.dto.task.TaskNameResponse;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class ProjectSimpleResponse {
-
     @NotNull
-    private String projectName;
-
-    private List<TaskNameResponse> taskName;
+    Integer projectId;
+    @NotNull
+    String projectName;
 
     @Builder
-    public ProjectSimpleResponse(Project project, List<TaskNameResponse> taskNameResponse) {
+    public ProjectSimpleResponse(Project project) {
+        this.projectId = project.getProjectId();
         this.projectName = project.getProjectName();
-        this.taskName = taskNameResponse;
     }
 }

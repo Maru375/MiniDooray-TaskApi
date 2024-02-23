@@ -1,9 +1,6 @@
 package com.nhnacademy.minidooray.taskapi.service;
 
-import com.nhnacademy.minidooray.taskapi.dto.project.ProjectCreateRequest;
-import com.nhnacademy.minidooray.taskapi.dto.project.ProjectResponse;
-import com.nhnacademy.minidooray.taskapi.dto.project.ProjectSimpleResponse;
-import com.nhnacademy.minidooray.taskapi.dto.project.ProjectUpdateRequest;
+import com.nhnacademy.minidooray.taskapi.dto.project.*;
 
 import java.util.List;
 
