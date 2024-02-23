@@ -1,10 +1,7 @@
 package com.nhnacademy.minidooray.taskapi.domain;
 
 import com.nhnacademy.minidooray.taskapi.enums.TaskState;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -13,7 +10,6 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "tasks")
 public class Task {
 
@@ -39,7 +35,7 @@ public class Task {
     private Milestone milestone;
 
     @Column(name = "task_name")
-    private String tasName;
+    private String taskName;
 
     @Column(name = "task_content")
     private String taskContent;
@@ -53,4 +49,18 @@ public class Task {
 
     @Column(name = "modified_at")
     private LocalDateTime modifiedAt;
+
+    @Builder
+    public Task(int taskId, ProjectMember projectId, ProjectMember managerId, Tag tag, Milestone milestone, String taskName, String taskContent, TaskState taskState, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+        this.taskId = taskId;
+        this.projectId = projectId;
+        this.managerId = managerId;
+        this.tag = tag;
+        this.milestone = milestone;
+        this.taskName = taskName;
+        this.taskContent = taskContent;
+        this.taskState = taskState;
+        this.createdAt = createdAt;
+        this.modifiedAt = modifiedAt;
+    }
 }
