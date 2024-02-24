@@ -8,9 +8,9 @@ import com.nhnacademy.minidooray.taskapi.dto.project.ProjectUpdateRequest;
 import com.nhnacademy.minidooray.taskapi.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -30,7 +30,7 @@ public class ProjectServiceImpl implements ProjectService {
         }
         return projects.stream()
                 .map(ProjectSimpleResponse::new)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override
@@ -48,8 +48,23 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public ProjectResponse updateProject(ProjectUpdateRequest projectUpdateRequest) {
-        return new ProjectResponse(projectRepository.save(projectUpdateRequest.toEntity()));
+    public ProjectResponse updateProject(Integer id, ProjectUpdateRequest projectUpdateRequest) {
+        Project project = projectRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("id : " + id + "는 찾을 수 없는 아이디 입니다."));
+
+        if(project != null){
+            project.setProjectName(projectUpdateRequest.getProjectName());
+            project.setProjectContent(projectUpdateRequest.getProjectContent());
+            if(projectUpdateRequest.getTagId() != null){
+                project.setTagId(projectUpdateRequest.getTagId());
+            }
+            if(projectUpdateRequest.getMilestoneId() != null){
+                project.setMilestoneId(projectUpdateRequest.getMilestoneId());
+            }
+            project.setModifiedAt(LocalDateTime.now());
+            return new ProjectResponse(projectRepository.save(project));
+        }
+        return null;
     }
 
     @Override

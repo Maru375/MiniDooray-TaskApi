@@ -1,0 +1,29 @@
+POST http://localhost:9090/projects/6
+Content-Type: application/json
+
+{
+  "projectName": "프로젝트 이어름",
+  "projectContent": "프로젝트 내용 몰루"
+}
+
+###
+PUT http://localhost:9090/projects
+Content-Type: application/json
+
+{
+  "projectName": "프로젝트 이어름 은아어",
+  "projectContent": "프로젝트 내용 몰루 이건뭐야",
+  "createdAt": "2024-02-23T12:00:00"
+}
+
+###
+GET http://localhost:9090/projects
+Accept: application/json
+
+###
+GET http://localhost:9090/projects/8
+Accept: application/json
+
+###
+DELETE http://localhost:9090/projects/4
+Accept: application/json
