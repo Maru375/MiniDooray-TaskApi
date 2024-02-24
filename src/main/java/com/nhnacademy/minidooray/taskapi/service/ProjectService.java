@@ -2,13 +2,13 @@ package com.nhnacademy.minidooray.taskapi.service;
 
 import com.nhnacademy.minidooray.taskapi.dto.project.ProjectCreateRequest;
 import com.nhnacademy.minidooray.taskapi.dto.project.ProjectResponse;
-import com.nhnacademy.minidooray.taskapi.dto.project.ProjectSimpleResponse;
+import com.nhnacademy.minidooray.taskapi.dto.project.ProjectNameResponse;
 import com.nhnacademy.minidooray.taskapi.dto.project.ProjectUpdateRequest;
 
 import java.util.List;
 
 public interface ProjectService {
-    List<ProjectSimpleResponse> getProjects();
+    List<ProjectNameResponse> getProjects(String id);
 
     ProjectResponse getProject(Integer id);
 

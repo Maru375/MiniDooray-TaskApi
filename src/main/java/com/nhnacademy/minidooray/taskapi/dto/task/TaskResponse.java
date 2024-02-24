@@ -18,7 +18,7 @@ public class TaskResponse {
     @NotNull
     private int taskId;
     @NotNull
-    private Project projectId;
+    private Project project;
     @NotNull
     private String taskName;
     private String taskContent;
@@ -34,7 +34,7 @@ public class TaskResponse {
     @Builder
     public TaskResponse(Task task) {
         this.taskId = task.getTaskId();
-        this.projectId = task.getProjectId();
+        this.project = task.getProject();
         this.taskName = task.getTaskName();
         this.taskContent = task.getTaskContent();
         this.tag = task.getTag();

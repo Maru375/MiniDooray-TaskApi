@@ -8,8 +8,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
@@ -25,7 +23,7 @@ public class ProjectMember {
     @ManyToOne
     @MapsId("projectId")
     @JoinColumn(name = "project_id")
-    private Project projectId;
+    private Project project;
 
     @Column(name = "auth_type")
     @Enumerated(EnumType.STRING)
@@ -39,7 +37,6 @@ public class ProjectMember {
     public static class Pk implements Serializable {
 
         @Column(name = "member_id")
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private String memberId;
 
         private Integer projectId;

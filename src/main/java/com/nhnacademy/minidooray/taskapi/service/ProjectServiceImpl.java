@@ -3,7 +3,7 @@ package com.nhnacademy.minidooray.taskapi.service;
 import com.nhnacademy.minidooray.taskapi.domain.Project;
 import com.nhnacademy.minidooray.taskapi.dto.project.ProjectCreateRequest;
 import com.nhnacademy.minidooray.taskapi.dto.project.ProjectResponse;
-import com.nhnacademy.minidooray.taskapi.dto.project.ProjectSimpleResponse;
+import com.nhnacademy.minidooray.taskapi.dto.project.ProjectNameResponse;
 import com.nhnacademy.minidooray.taskapi.dto.project.ProjectUpdateRequest;
 import com.nhnacademy.minidooray.taskapi.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
@@ -22,15 +22,13 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<ProjectSimpleResponse> getProjects() {
-        List<Project> projects = projectRepository.findAll();
+    public List<ProjectNameResponse> getProjects(String id) {
+        List<ProjectNameResponse> projects = projectRepository.findByProjectMembers_Pk_MemberId(id);
 
         if (projects.isEmpty()) {
             return Collections.emptyList();
         }
-        return projects.stream()
-                .map(ProjectSimpleResponse::new)
-                .toList();
+        return projects;
     }
 
     @Override
@@ -56,10 +54,10 @@ public class ProjectServiceImpl implements ProjectService {
             project.setProjectName(projectUpdateRequest.getProjectName());
             project.setProjectContent(projectUpdateRequest.getProjectContent());
             if(projectUpdateRequest.getTagId() != null){
-                project.setTagId(projectUpdateRequest.getTagId());
+                project.setTag(projectUpdateRequest.getTagId());
             }
             if(projectUpdateRequest.getMilestoneId() != null){
-                project.setMilestoneId(projectUpdateRequest.getMilestoneId());
+                project.setMilestone(projectUpdateRequest.getMilestoneId());
             }
             project.setModifiedAt(LocalDateTime.now());
             return new ProjectResponse(projectRepository.save(project));

@@ -1,9 +1,14 @@
 package com.nhnacademy.minidooray.taskapi.domain;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,6 +22,9 @@ public class Project{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer projectId;
 
+    @OneToMany(mappedBy = "project")
+    private List<ProjectMember> projectMembers = new ArrayList<>();
+
     @Column(name = "project_name")
     private String projectName;
 
@@ -25,11 +33,11 @@ public class Project{
 
     @ManyToOne
     @JoinColumn(name = "tag_id")
-    private Tag tagId;
+    private Tag tag;
 
     @OneToOne
     @JoinColumn(name = "milestone_id")
-    private Milestone milestoneId;
+    private Milestone milestone;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -37,14 +45,13 @@ public class Project{
     @Column(name = "modified_at")
     private LocalDateTime modifiedAt;
 
-
     @Builder
-    public Project(Integer projectId, String projectName, String projectContent, Tag tagId, Milestone milestoneId, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public Project(Integer projectId, String projectName, String projectContent, Tag tag, Milestone milestone, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.projectContent = projectContent;
-        this.tagId = tagId;
-        this.milestoneId = milestoneId;
+        this.tag = tag;
+        this.milestone = milestone;
         this.createdAt = createdAt;
         this.modifiedAt = modifiedAt;
     }

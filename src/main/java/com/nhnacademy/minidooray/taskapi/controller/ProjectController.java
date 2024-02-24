@@ -1,12 +1,11 @@
 package com.nhnacademy.minidooray.taskapi.controller;
 
 import com.nhnacademy.minidooray.taskapi.dto.project.ProjectCreateRequest;
+import com.nhnacademy.minidooray.taskapi.dto.project.ProjectNameResponse;
 import com.nhnacademy.minidooray.taskapi.dto.project.ProjectResponse;
-import com.nhnacademy.minidooray.taskapi.dto.project.ProjectSimpleResponse;
 import com.nhnacademy.minidooray.taskapi.dto.project.ProjectUpdateRequest;
 import com.nhnacademy.minidooray.taskapi.service.ProjectService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +19,8 @@ public class ProjectController {
     private final ProjectService service;
 
     @GetMapping
-    public List<ProjectSimpleResponse> getProjects() {
-        return service.getProjects();
+    public List<ProjectNameResponse> getProjects(@RequestHeader("X-USER-ID") String id) {
+        return service.getProjects(id);
     }
 
     @GetMapping("/{id}")
@@ -35,14 +34,12 @@ public class ProjectController {
     }
 
     @PutMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<ProjectResponse> createProject(@RequestBody ProjectCreateRequest projectCreateRequest) {
         ProjectResponse response = service.createProject(projectCreateRequest);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<ProjectResponse> updateProject(@PathVariable Integer id, @RequestBody ProjectUpdateRequest projectUpdateRequest) {
         ProjectResponse response = service.updateProject(id, projectUpdateRequest);
         if (response != null) {
