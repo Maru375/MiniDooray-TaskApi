@@ -1,0 +1,23 @@
+GET http://localhost:9090/task/1/comment
+Accept: application/json
+
+###
+PUT http://localhost:9090/task/1/comment
+Content-Type: application/json
+
+{
+  "name": "범익",
+  "commentContent": "코멘트 테스트4"
+}
+
+###
+POST http://localhost:9090/task/1/comment/2
+Content-Type: application/json
+
+{
+  "commentsContent": "코멘트 수정 테스트"
+}
+
+###
+DELETE http://localhost:9090/project/1/task/2
+Accept: application/json

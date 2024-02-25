@@ -21,9 +21,9 @@ public class ProjectResponse {
 
     private String projectContent;
 
-    private Tag tagId;
+    private Tag tag;
 
-    private Milestone milestoneId;
+    private Milestone milestone;
 
     @NotNull
     private LocalDateTime createdAt;
@@ -34,8 +34,8 @@ public class ProjectResponse {
     public ProjectResponse(Project project) {
         this.projectName = project.getProjectName();
         this.projectContent = project.getProjectContent();
-        this.tagId = project.getTagId();
-        this.milestoneId = project.getMilestoneId();
+        this.tag = project.getTag();
+        this.milestone = project.getMilestone();
         this.createdAt = project.getCreatedAt();
         this.modifiedAt = project.getModifiedAt();
     }

@@ -1,19 +1,11 @@
 package com.nhnacademy.minidooray.taskapi.service;
 
-import com.nhnacademy.minidooray.taskapi.domain.Project;
-import com.nhnacademy.minidooray.taskapi.domain.ProjectMember;
-
-import java.util.List;
+import com.nhnacademy.minidooray.taskapi.dto.projectmember.ProjectMemberAddRequest;
+import com.nhnacademy.minidooray.taskapi.dto.projectmember.ProjectMemberResponse;
 
 public interface ProjectMemberService {
 
-    List<ProjectMember> getProjectMembers();
+    ProjectMemberResponse addProjectMember(Integer projectId, ProjectMemberAddRequest projectMember);
 
-    ProjectMember getProjectMember(Integer id);
-
-    ProjectMember createProjectMember(ProjectMember projectMember);
-
-    ProjectMember updateProjectMember(ProjectMember projectMember);
-
-    void deleteProjectMember(Integer id);
+    void deleteProjectMember(String memberId, Integer projectId);
 }

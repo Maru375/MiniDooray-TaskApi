@@ -4,11 +4,15 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "projects")
 public class Project{
 
@@ -16,6 +20,9 @@ public class Project{
     @Column(name = "project_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer projectId;
+
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProjectMember> projectMembers = new ArrayList<>();
 
     @Column(name = "project_name")
     private String projectName;
@@ -25,11 +32,11 @@ public class Project{
 
     @ManyToOne
     @JoinColumn(name = "tag_id")
-    private Tag tagId;
+    private Tag tag;
 
     @OneToOne
     @JoinColumn(name = "milestone_id")
-    private Milestone milestoneId;
+    private Milestone milestone;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -37,15 +44,7 @@ public class Project{
     @Column(name = "modified_at")
     private LocalDateTime modifiedAt;
 
-
-    @Builder
-    public Project(Integer projectId, String projectName, String projectContent, Tag tagId, Milestone milestoneId, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public Project(Integer projectId){
         this.projectId = projectId;
-        this.projectName = projectName;
-        this.projectContent = projectContent;
-        this.tagId = tagId;
-        this.milestoneId = milestoneId;
-        this.createdAt = createdAt;
-        this.modifiedAt = modifiedAt;
     }
 }

@@ -1,0 +1,32 @@
+GET http://localhost:9090/project/1/task
+Accept: application/json
+
+###
+GET http://localhost:9090/project/1/task/1
+Accept: application/json
+
+###
+PUT http://localhost:9090/project/1/task
+Content-Type: application/json
+
+{
+  "taskName": "테스크 생성 테스트",
+  "taskContent": "테스크 내용",
+  "recorder": "범익",
+  "taskState": "PROCEEDING"
+}
+
+###
+POST http://localhost:9090/project/1/task/20
+Content-Type: application/json
+
+{
+  "taskName": "테스크 수정 테스트",
+  "taskContent": "테스크 내용",
+  "recorder": "범익",
+  "taskState": "END"
+}
+
+###
+DELETE http://localhost:9090/project/1/task/20
+Accept: application/json

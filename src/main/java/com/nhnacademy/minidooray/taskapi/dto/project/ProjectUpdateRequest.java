@@ -6,15 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotNull;
-
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProjectUpdateRequest {
-    @NotNull
     private String projectName;
-    @NotNull
     private String projectContent;
     private Tag tagId;
     private Milestone milestoneId;

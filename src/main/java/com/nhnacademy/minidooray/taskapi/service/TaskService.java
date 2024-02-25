@@ -1,19 +1,21 @@
 package com.nhnacademy.minidooray.taskapi.service;
 
-import com.nhnacademy.minidooray.taskapi.domain.Task;
+import com.nhnacademy.minidooray.taskapi.dto.task.TaskCreateRequest;
+import com.nhnacademy.minidooray.taskapi.dto.task.TaskNameResponse;
 import com.nhnacademy.minidooray.taskapi.dto.task.TaskResponse;
+import com.nhnacademy.minidooray.taskapi.dto.task.TaskUpdateRequest;
 
 import java.util.List;
 
 public interface TaskService {
 
-    List<TaskResponse> getTasks();
+    List<TaskNameResponse> getTasks(Integer id);
 
-    TaskResponse getTask(Integer id);
+    TaskResponse getTask(Integer projectId, Integer taskId);
 
-    TaskResponse createTask(Task task);
+    TaskResponse createTask(Integer projectId, TaskCreateRequest taskCreateRequest);
 
-    TaskResponse updateTask(Task task);
+    TaskResponse updateTask(Integer id, TaskUpdateRequest taskUpdateRequest);
 
     void deleteTask(Integer id);
 }
