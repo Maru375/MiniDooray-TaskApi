@@ -33,8 +33,8 @@ public class ProjectController {
     }
 
     @PutMapping
-    public ResponseEntity<ProjectResponse> createProject(@RequestBody ProjectCreateRequest projectCreateRequest) {
-        ProjectResponse response = service.createProject(projectCreateRequest);
+    public ResponseEntity<ProjectResponse> createProject(@RequestHeader("X-USER-ID") String userId, @RequestBody ProjectCreateRequest projectCreateRequest) {
+        ProjectResponse response = service.createProject(userId, projectCreateRequest);
         return ResponseEntity.ok(response);
     }
 

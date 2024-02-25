@@ -23,11 +23,12 @@ GET http://localhost:9090/project/2/task
 Accept: application/json
 
 ###
-GET http://localhost:9090/projects/8
+GET http://localhost:9090/project
+X-USER-ID: admin
 Accept: application/json
 
 ###
-DELETE http://localhost:9090/project/4
+DELETE http://localhost:9090/project
 Accept: application/json
 
 ###
@@ -51,4 +52,20 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:9090/project/1/task/10
+PUT http://localhost:9090/project
+X-USER-ID: testId
+Content-Type: application/json
+
+{
+  "projectName": "테스트 1111",
+  "projectContent": "프로젝트 생성 테스트"
+}
+
+###
+GET http://localhost:9090/project
+X-USER-ID: testId
+Content-Type: application/json
+
+###
+GET http://localhost:9090/project/7
+Accept: application/json
