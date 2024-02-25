@@ -1,6 +1,5 @@
 package com.nhnacademy.minidooray.taskapi.controller;
 
-import com.nhnacademy.minidooray.taskapi.domain.ProjectMember;
 import com.nhnacademy.minidooray.taskapi.dto.projectmember.ProjectMemberAddRequest;
 import com.nhnacademy.minidooray.taskapi.dto.projectmember.ProjectMemberResponse;
 import com.nhnacademy.minidooray.taskapi.service.ProjectMemberService;
