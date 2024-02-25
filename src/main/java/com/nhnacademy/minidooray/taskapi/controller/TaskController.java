@@ -49,7 +49,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/{taskId}")
-    public ResultResponse deleteTask(@PathVariable Integer taskId, @PathVariable String projectId) {
+    public ResultResponse deleteTask(@PathVariable Integer taskId) {
         taskService.deleteTask(taskId);
         return new ResultResponse("DELETE OK");
     }
