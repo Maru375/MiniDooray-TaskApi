@@ -29,9 +29,9 @@ public class TaskCreateRequest {
     private String recorder;
     private TaskState taskState;
 
-    public Task toEntity(){
+    public Task toEntity(Integer id){
         return Task.builder()
-                .project(project)
+                .project(new Project(id))
                 .taskName(taskName)
                 .taskContent(taskContent)
                 .tag(tag)

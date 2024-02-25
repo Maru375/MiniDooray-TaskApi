@@ -15,16 +15,13 @@ public class CommentCreateRequest {
     private Task task;
     private String name;
     private String commentContent;
-    private LocalDateTime createdAt;
-    private LocalDateTime modifiedAt;
 
-    public Comment toEntity() {
+    public Comment toEntity(Integer id) {
         return Comment.builder()
-                .task(task)
+                .task(new Task(id))
                 .name(name)
                 .commentContent(commentContent)
-                .createdAt(createdAt)
-                .modifiedAt(modifiedAt)
+                .createdAt(LocalDateTime.now())
                 .build();
     }
 }

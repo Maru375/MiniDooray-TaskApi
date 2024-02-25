@@ -13,7 +13,7 @@ public interface TaskService {
 
     TaskResponse getTask(Integer projectId, Integer taskId);
 
-    TaskResponse createTask(TaskCreateRequest taskCreateRequest);
+    TaskResponse createTask(Integer projectId, TaskCreateRequest taskCreateRequest);
 
     TaskResponse updateTask(Integer id, TaskUpdateRequest taskUpdateRequest);
 

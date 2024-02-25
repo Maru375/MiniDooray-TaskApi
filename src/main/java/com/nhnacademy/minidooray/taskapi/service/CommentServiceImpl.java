@@ -8,6 +8,7 @@ import com.nhnacademy.minidooray.taskapi.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -22,16 +23,19 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public CommentResponse createComment(CommentCreateRequest commentCreateRequest) {
-        return new CommentResponse(commentRepository.save(commentCreateRequest.toEntity()));
+    public CommentResponse createComment(Integer taskId, CommentCreateRequest commentCreateRequest) {
+        return new CommentResponse(commentRepository.save(commentCreateRequest.toEntity(taskId)));
     }
 
     @Override
     public CommentResponse updateComment(Integer id, CommentUpdateRequest commentUpdateRequest) {
-        Comment comment = commentRepository.findById(id).orElse(null);
-        if(comment != null && commentUpdateRequest.getCommentsContent() != null){
+        Comment comment = commentRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("id : " + id + "는 찾을 수 없는 코멘트 입니다."));
+
+        if(comment != null){
             comment.setCommentContent(commentUpdateRequest.getCommentsContent());
-            commentRepository.save(comment);
+            comment.setModifiedAt(LocalDateTime.now());
+            return new CommentResponse(commentRepository.save(comment));
         }
         return null;
     }

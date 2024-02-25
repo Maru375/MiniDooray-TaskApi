@@ -1,0 +1,30 @@
+GET http://localhost:9090/project
+X-USER-ID: admin
+Accept: application/json
+
+###
+GET http://localhost:9090/project/1
+Accept: application/json
+
+###
+PUT http://localhost:9090/project
+X-USER-ID: admin
+Content-Type: application/json
+
+{
+  "projectName": "프로젝트 생성 테스트",
+  "projectContent": "프로젝트 생성 내용"
+}
+
+###
+POST http://localhost:9090/project/10
+Content-Type: application/json
+
+{
+  "projectName": "프로젝트 생성 테스트2",
+  "projectContent": "프로젝트 생성 내용2"
+}
+
+###
+DELETE http://localhost:9090/project/10
+Accept: application/json

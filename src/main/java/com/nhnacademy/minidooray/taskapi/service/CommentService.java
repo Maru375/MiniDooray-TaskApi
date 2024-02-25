@@ -10,9 +10,9 @@ public interface CommentService {
 
     List<CommentResponse> getComments(Integer id);
 
-    CommentResponse createComment(CommentCreateRequest commentCreateRequest);
+    CommentResponse createComment(Integer taskId, CommentCreateRequest commentCreateRequest);
 
-    CommentResponse updateComment(Integer id, CommentUpdateRequest commentUpdateRequest);
+    CommentResponse updateComment(Integer commentId, CommentUpdateRequest commentUpdateRequest);
 
     void deleteComment(Integer id);
 }

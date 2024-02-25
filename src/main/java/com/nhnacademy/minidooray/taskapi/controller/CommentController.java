@@ -23,8 +23,8 @@ public class CommentController {
     }
 
     @PutMapping
-    public ResponseEntity<CommentResponse> createTask(@RequestBody CommentCreateRequest commentCreateRequest){
-        CommentResponse comment = commentService.createComment(commentCreateRequest);
+    public ResponseEntity<CommentResponse> createTask(@PathVariable Integer taskId, @RequestBody CommentCreateRequest commentCreateRequest){
+        CommentResponse comment = commentService.createComment(taskId, commentCreateRequest);
         return ResponseEntity.ok(comment);
     }
 

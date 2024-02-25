@@ -1,9 +1,6 @@
 package com.nhnacademy.minidooray.taskapi.domain;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -13,7 +10,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "projects")
 public class Project{
 
@@ -22,7 +21,7 @@ public class Project{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer projectId;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProjectMember> projectMembers = new ArrayList<>();
 
     @Column(name = "project_name")
@@ -45,14 +44,7 @@ public class Project{
     @Column(name = "modified_at")
     private LocalDateTime modifiedAt;
 
-    @Builder
-    public Project(Integer projectId, String projectName, String projectContent, Tag tag, Milestone milestone, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public Project(Integer projectId){
         this.projectId = projectId;
-        this.projectName = projectName;
-        this.projectContent = projectContent;
-        this.tag = tag;
-        this.milestone = milestone;
-        this.createdAt = createdAt;
-        this.modifiedAt = modifiedAt;
     }
 }

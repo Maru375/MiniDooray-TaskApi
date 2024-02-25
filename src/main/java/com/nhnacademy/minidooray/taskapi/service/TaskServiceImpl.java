@@ -37,8 +37,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public TaskResponse createTask(TaskCreateRequest taskCreateRequest) {
-        return new TaskResponse(taskRepository.save(taskCreateRequest.toEntity()));
+    public TaskResponse createTask(Integer projectId, TaskCreateRequest taskCreateRequest) {
+        return new TaskResponse(taskRepository.save(taskCreateRequest.toEntity(projectId)));
     }
 
     @Override

@@ -9,7 +9,9 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "tasks")
 public class Task {
 
@@ -48,17 +50,7 @@ public class Task {
     @Column(name = "modified_at")
     private LocalDateTime modifiedAt;
 
-    @Builder
-    public Task(int taskId, Project project, Tag tag, Milestone milestone, String taskName, String taskContent, String recorder, TaskState taskState, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public Task(Integer taskId){
         this.taskId = taskId;
-        this.project = project;
-        this.tag = tag;
-        this.milestone = milestone;
-        this.taskName = taskName;
-        this.taskContent = taskContent;
-        this.recorder = recorder;
-        this.taskState = taskState;
-        this.createdAt = createdAt;
-        this.modifiedAt = modifiedAt;
     }
 }

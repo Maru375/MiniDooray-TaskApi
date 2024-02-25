@@ -33,13 +33,13 @@ public class TaskController {
     }
 
     @PutMapping
-    public ResponseEntity<TaskResponse> createTask(@RequestBody TaskCreateRequest taskCreateRequest, @PathVariable String projectId){
-        TaskResponse task = taskService.createTask(taskCreateRequest);
+    public ResponseEntity<TaskResponse> createTask(@RequestBody TaskCreateRequest taskCreateRequest, @PathVariable Integer projectId){
+        TaskResponse task = taskService.createTask(projectId, taskCreateRequest);
         return ResponseEntity.ok(task);
     }
 
     @PostMapping("/{taskId}")
-    public ResponseEntity<TaskResponse> updateTask(@PathVariable Integer taskId, @RequestBody TaskUpdateRequest taskUpdateRequest, @PathVariable String projectId){
+    public ResponseEntity<TaskResponse> updateTask(@PathVariable Integer taskId, @RequestBody TaskUpdateRequest taskUpdateRequest){
         TaskResponse taskResponse = taskService.updateTask(taskId, taskUpdateRequest);
         if (taskResponse != null) {
             return ResponseEntity.ok(taskResponse);

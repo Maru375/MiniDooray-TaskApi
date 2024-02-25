@@ -8,7 +8,9 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "milestones")
 public class Milestone {
 
@@ -24,12 +26,4 @@ public class Milestone {
 
     @Column(name = "end_date")
     private LocalDateTime endDate;
-
-    @Builder
-    public Milestone(Integer milestoneId, String name, LocalDateTime startedAt, LocalDateTime endDate) {
-        this.milestoneId = milestoneId;
-        this.name = name;
-        this.startedAt = startedAt;
-        this.endDate = endDate;
-    }
 }
