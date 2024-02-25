@@ -67,5 +67,5 @@ X-USER-ID: testId
 Content-Type: application/json
 
 ###
-GET http://localhost:9090/project/7
+GET http://localhost:9090/project/1/task/1
 Accept: application/json

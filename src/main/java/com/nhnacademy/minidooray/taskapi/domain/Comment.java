@@ -1,9 +1,6 @@
 package com.nhnacademy.minidooray.taskapi.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,7 +9,6 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "comments")
 public class Comment {
 
@@ -28,11 +24,21 @@ public class Comment {
     private String name;
 
     @Column(name = "comments_content")
-    private String commentsContent;
+    private String commentContent;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @Column(name = "modified_at")
     private LocalDateTime modifiedAt;
+
+    @Builder
+    public Comment(Integer commentId, Task task, String name, String commentContent, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+        this.commentId = commentId;
+        this.task = task;
+        this.name = name;
+        this.commentContent = commentContent;
+        this.createdAt = createdAt;
+        this.modifiedAt = modifiedAt;
+    }
 }
