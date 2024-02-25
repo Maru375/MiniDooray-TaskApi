@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/projects")
+@RequestMapping("/project")
 public class ProjectController {
 
     private final ProjectService service;
@@ -28,9 +28,8 @@ public class ProjectController {
         ProjectResponse response = service.getProject(id);
         if (response != null) {
             return ResponseEntity.ok(response);
-        } else {
-            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.notFound().build();
     }
 
     @PutMapping

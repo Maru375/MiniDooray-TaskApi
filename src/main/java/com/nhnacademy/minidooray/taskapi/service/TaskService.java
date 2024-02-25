@@ -10,7 +10,7 @@ public interface TaskService {
 
     List<TaskNameResponse> getTasks(Integer id);
 
-    TaskResponse getTask(Integer id);
+    TaskResponse getTask(Integer projectId, Integer taskId);
 
     TaskResponse createTask(TaskCreateRequest taskCreateRequest);
 
