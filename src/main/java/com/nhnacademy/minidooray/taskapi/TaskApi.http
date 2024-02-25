@@ -2,23 +2,24 @@ POST http://localhost:9090/projects/6
 Content-Type: application/json
 
 {
-  "projectName": "프로젝트 이어름",
   "projectContent": "프로젝트 내용 몰루"
 }
 
 ###
-PUT http://localhost:9090/projects
+PUT http://localhost:9090/task
 Content-Type: application/json
 
 {
-  "projectName": "프로젝트 이어름 은아어",
-  "projectContent": "프로젝트 내용 몰루 이건뭐야",
-  "createdAt": "2024-02-23T12:00:00"
+  "project": {
+    "projectId": 1
+  },
+  "taskName": "업데이트 테스트33",
+  "recorder": "범익",
+  "taskState": "PROCEEDING"
 }
 
 ###
-GET http://localhost:9090/projects
-X-USER-ID: kim@example.com
+GET http://localhost:9090/project/2/task
 Accept: application/json
 
 ###
@@ -26,7 +27,7 @@ GET http://localhost:9090/projects/8
 Accept: application/json
 
 ###
-DELETE http://localhost:9090/projects/4
+DELETE http://localhost:9090/project/4
 Accept: application/json
 
 ###
@@ -34,5 +35,20 @@ GET http://localhost:9090/task/1
 Accept: application/json
 
 ###
-GET http://localhost:9090/task/1/1
+GET http://localhost:9090/task/1/10
 Accept: application/json
+
+###
+DELETE http://localhost:9090/task/10
+Accept: application/json
+
+###
+POST http://localhost:9090/task/10
+Content-Type: application/json
+
+{
+  "taskState": "END"
+}
+
+###
+GET http://localhost:9090/project/1/task/10

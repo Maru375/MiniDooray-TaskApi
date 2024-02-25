@@ -13,8 +13,6 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaskUpdateRequest {
-
-    @NotNull
     private String taskName;
     private String taskContent;
     private Tag tag;

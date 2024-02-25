@@ -12,9 +12,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProjectUpdateRequest {
-    @NotNull
     private String projectName;
-    @NotNull
     private String projectContent;
     private Tag tagId;
     private Milestone milestoneId;

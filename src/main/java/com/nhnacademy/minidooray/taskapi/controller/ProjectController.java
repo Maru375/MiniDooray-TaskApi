@@ -19,13 +19,13 @@ public class ProjectController {
     private final ProjectService service;
 
     @GetMapping
-    public List<ProjectNameResponse> getProjects(@RequestHeader("X-USER-ID") String id) {
-        return service.getProjects(id);
+    public List<ProjectNameResponse> getProjects(@RequestHeader("X-USER-ID") String userId) {
+        return service.getProjects(userId);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ProjectResponse> getProject(@PathVariable Integer id) {
-        ProjectResponse response = service.getProject(id);
+    @GetMapping("/{projectId}")
+    public ResponseEntity<ProjectResponse> getProject(@PathVariable Integer projectId) {
+        ProjectResponse response = service.getProject(projectId);
         if (response != null) {
             return ResponseEntity.ok(response);
         }
@@ -38,9 +38,9 @@ public class ProjectController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/{id}")
-    public ResponseEntity<ProjectResponse> updateProject(@PathVariable Integer id, @RequestBody ProjectUpdateRequest projectUpdateRequest) {
-        ProjectResponse response = service.updateProject(id, projectUpdateRequest);
+    @PostMapping("/{projectId}")
+    public ResponseEntity<ProjectResponse> updateProject(@PathVariable Integer projectId, @RequestBody ProjectUpdateRequest projectUpdateRequest) {
+        ProjectResponse response = service.updateProject(projectId, projectUpdateRequest);
         if (response != null) {
             return ResponseEntity.ok(response);
         } else {
@@ -48,9 +48,9 @@ public class ProjectController {
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResultResponse deleteAccount(@PathVariable("id") Integer id) {
-        service.deleteProject(id);
+    @DeleteMapping("/{projectId}")
+    public ResultResponse deleteProject(@PathVariable Integer projectId) {
+        service.deleteProject(projectId);
         return new ResultResponse("DELETE OK");
     }
 }

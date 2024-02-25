@@ -48,11 +48,15 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public ProjectResponse updateProject(Integer id, ProjectUpdateRequest projectUpdateRequest) {
         Project project = projectRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("id : " + id + "는 찾을 수 없는 아이디 입니다."));
+                .orElseThrow(() -> new IllegalArgumentException("id : " + id + "는 찾을 수 없는 프로젝트 입니다."));
 
         if(project != null){
-            project.setProjectName(projectUpdateRequest.getProjectName());
-            project.setProjectContent(projectUpdateRequest.getProjectContent());
+            if(projectUpdateRequest.getProjectName() != null){
+                project.setProjectName(projectUpdateRequest.getProjectName());
+            }
+            if(projectUpdateRequest.getProjectContent() != null){
+                project.setProjectContent(projectUpdateRequest.getProjectContent());
+            }
             if(projectUpdateRequest.getTagId() != null){
                 project.setTag(projectUpdateRequest.getTagId());
             }
